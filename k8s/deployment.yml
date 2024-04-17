@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-cat-k8s
+  labels:
+    app: demo-cat-k8s
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: demo-cat-k8s
+  template:
+    metadata:
+      labels:
+        app: demo-cat-k8s
+    spec:
+      containers:
+        - name: demo-cat-k8s
+          image: alexanderi/demo-cat-k8s:1.0.0
+          ports:
+            - containerPort: 8080
+          env:
+            - name: DATASOURCE_HOST
+              value: 192.168.0.27
+            - name: spring.mvc.servlet.path
+              value: /demo-cat-k8s

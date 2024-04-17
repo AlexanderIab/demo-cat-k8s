@@ -1,0 +1,15 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: alexi
+spec:
+  rules:
+    - http:
+        paths:
+          - pathType: Prefix
+            path: /demo-cat-k8s
+            backend:
+              service:
+                name: demo-cat-k8s
+                port:
+                  number: 80
